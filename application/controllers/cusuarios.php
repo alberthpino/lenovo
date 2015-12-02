@@ -19,7 +19,11 @@ class Cusuarios extends CI_Controller {
 	}
 	public function registroIndividuo()
 	{
+
+		error_reporting(0);
+
 		$estado = $this->musuarios->buscarDniExiste();
+		
 		if ($estado) {
 			echo json_encode(array('success' => false));
 		} 
@@ -31,7 +35,6 @@ class Cusuarios extends CI_Controller {
 	        $_SESSION['individuoId'] = $usuarioId;
 	        $_SESSION['tipoPartida'] = $this->input->post("tipo_partida_id");
 	        $_SESSION['partidaId'] = $partidaId;
-
 			echo json_encode(array('success' => $partidaId));
 		}
 	}
