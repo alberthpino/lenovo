@@ -18,7 +18,7 @@ $.fn.baseUrl = function() {
         a = url_local.split(opcional),
         url_original = (a[0] != 'http:' && a[0] != 'https:') ? 'http://' + a[0] + '/' : a[0] + '//' + a[1] + a[2] + '/';
     
-    return url_original + '/';
+    return url_original + '';
 }
 
 $.fn.baseUrl2 = function() { 
