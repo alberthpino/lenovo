@@ -100,8 +100,8 @@ $.fn.mostrarPregunta = function() {
 			};
 			if (contador == 11) {
 				clearInterval(timer);
-				//datos="partida_aciertos=0&partida_fallos=1&partida_tiempo=10";
-				//$.fn.actualizarDatosPartida(datos);
+				datos="partida_aciertos=0&partida_fallos=1&partida_tiempo=10";
+				$.fn.actualizarDatosPartida(datos);
 			};
 		},1000);
 	}else{
