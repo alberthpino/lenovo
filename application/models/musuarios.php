@@ -37,6 +37,27 @@ class Musuarios extends CI_Model{
         }
 
     }
+
+
+    public function sendEmail () {
+
+        $mail_destinatario = $this->usuario_email;
+        $from = 'Lenovo Serie y Gamer';
+        $headers = 'From: '.$from;
+        $asunto = 'Confirmación de Registro - Lenovo';
+        $mensaje = ''.
+                '\nEstimado(a) '.$this->usuario_nombres.':\n'.
+                'Usted acaba de registrarse en el concurso de Lenovo Serie y Gamer.\n\n'.
+                'Sus datos registrados son los siguientes:\n\n'.
+                'Nombres y Apellidos: ' . $this->usuario_nombres.', '. $this->usuario_apellidos.
+                '\nDni: ' .  $this->usuario_dni.
+                '\nMovil: ' .  $this->usuario_movil.
+                '\nEmail: ' .  $this->usuario_email.
+                '\n\nGracias por participar.';
+
+        @mail($mail_destinatario, $asunto, stripcslashes($mensaje), $headers);
+
+    }
     
     public function buscarDniExiste()
     {
