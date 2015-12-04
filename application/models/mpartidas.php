@@ -24,8 +24,10 @@ class Mpartidas extends CI_Model{
                         'partida_aciertos' => 0,
                         'partida_fallos' => 0,
                         'partida_tiempo' => 0,
+                        'partida_pregunta' => 0,
                         'tipo_partida_id' => $this->tipo_partida_id,
                         'partida_fecha_inicio' => $date,
+                        'partida_fecha_fin' => $date,
                     );
         $this->db->insert("partidas",$data);
         if ($this->db->affected_rows() > 0) { 
@@ -92,8 +94,11 @@ class Mpartidas extends CI_Model{
     public function getPreguntaActual()
     {
         $partidaId = $_SESSION['partidaId'];
+
+        $data_where = array("partida_id" => $partidaId);
+        
         $this->db->from("partidas p");
-        $this->db->where("partida_id", $partidaId);
+        $this->db->where($data_where);
         $query = $this->db->get();
         return $query->row();
     }

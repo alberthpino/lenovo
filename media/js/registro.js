@@ -8,7 +8,8 @@ $(document).on("click","a.submit-form",function(e){
     	}
     	else{
 	    	var datos = $("form#registroIndividuo").serialize();
-	    	datos+="&tipo_partida_id="+$(this).data("tipo"),
+	    	datos+="&tipo_partida_id="+$(this).data("tipo");
+
 	    	$.ajax({
 	    		url:$base_url+"cusuarios/registroIndividuo",
 	    		data:datos,
@@ -16,7 +17,7 @@ $(document).on("click","a.submit-form",function(e){
 	    		type:"POST",
 	    	}).done(function(data){
 	    		var dataJson = eval(data);
-	    		if (dataJson['success'] > 0) {
+	    		if (dataJson['success']) {
 	    			$("form#registroIndividuo")[0].reset();
 	    			window.location.href = $base_url+"cpreguntas/juego";
 	    		}else{

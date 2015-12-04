@@ -11,13 +11,14 @@ class Musuarios extends CI_Model{
         $this->usuario_id = $this->input->post('individuo_id');
         $this->usuario_nombres = $this->input->post('individuo_nombres');
         $this->usuario_apellidos = $this->input->post('individuo_apellidos');
-        $this->usuario_dni = $this->input->post('individuo_dni');
+        $this->usuario_dni = $this->input->post('individuo_dni')."";
         $this->usuario_movil = $this->input->post('individuo_movil');
         $this->usuario_email = $this->input->post('individuo_email');
     }
 
     public function registroIndividuo() { 
-        $data = array ( 'individuo_nombres' => $this->usuario_nombres,
+        $data = array ( 
+                        'individuo_nombres' => $this->usuario_nombres,
                         'individuo_apellidos' => $this->usuario_apellidos,
                         'individuo_dni' => $this->usuario_dni,
                         'individuo_movil' => $this->usuario_movil,
@@ -27,7 +28,9 @@ class Musuarios extends CI_Model{
         $this->db->insert("individuos",$data);
         
         if ($this->db->affected_rows() > 0) { 
+            
             return $this->db->insert_id();
+        
         } 
         else {
             return false;
@@ -35,6 +38,27 @@ class Musuarios extends CI_Model{
 
     }
 
+
+    public function sendEmail () {
+
+        $mail_destinatario = $this->usuario_email;
+        $from = 'Lenovo Serie y Gamer';
+        $headers = 'From: '.$from;
+        $asunto = 'Confirmación de Registro - Lenovo';
+        $mensaje = ''.
+                '\nEstimado(a) '.$this->usuario_nombres.':\n'.
+                'Usted acaba de registrarse en el concurso de Lenovo Serie y Gamer.\n\n'.
+                'Sus datos registrados son los siguientes:\n\n'.
+                'Nombres y Apellidos: ' . $this->usuario_nombres.', '. $this->usuario_apellidos.
+                '\nDni: ' .  $this->usuario_dni.
+                '\nMovil: ' .  $this->usuario_movil.
+                '\nEmail: ' .  $this->usuario_email.
+                '\n\nGracias por participar.';
+
+        @mail($mail_destinatario, $asunto, stripcslashes($mensaje), $headers);
+
+    }
+    
     public function buscarDniExiste()
     {
         $data_where  = array('individuo_dni' => $this->usuario_dni);

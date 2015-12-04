@@ -17,7 +17,7 @@
 |
 */
 // $config['base_url'] = 'http://127.0.0.1/freelance/hotel/motel2/index.php/';
-$config['base_url'] = '';
+$config['base_url'] = 'https://stormy-river-4772.herokuapp.com/';
 
 /*
 |--------------------------------------------------------------------------
