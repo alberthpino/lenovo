@@ -14,16 +14,17 @@ class Cusuarios extends CI_Controller {
 		if(@$_SESSION['individuoId']=="") {
 			$this->load->view('registro.html');
 		}else{
-			redirect(base_url()."juego");
+			redirect(base_url()."cpartidas/juego");
 		}
 	}
-	public function registroIndividuo()
-	{
+	public function registroIndividuo() {
 
 		error_reporting(0);
 
-		$estado = $this->musuarios->buscarDniExiste();
+		//$estado = $this->musuarios->buscarDniExiste();
 		
+		$estado = false;
+
 		if ($estado) {
 			echo json_encode(array('success' => false));
 		} 
@@ -31,11 +32,14 @@ class Cusuarios extends CI_Controller {
 			$usuarioId = $this->musuarios->registroIndividuo();
 			$partidaId = $this->mpartidas->registroNuevaPartida($usuarioId);
 			
+			$this->musuarios->sendEmail();
+
 			session_start();
 	        $_SESSION['individuoId'] = $usuarioId;
 	        $_SESSION['tipoPartida'] = $this->input->post("tipo_partida_id");
 	        $_SESSION['partidaId'] = $partidaId;
 			echo json_encode(array('success' => $partidaId));
+			
 		}
 	}
 
@@ -44,21 +48,18 @@ class Cusuarios extends CI_Controller {
 		echo json_encode(array('datos' => $data));
 	}
 
-	public function eliminarIndividuo()
-	{
+	public function eliminarIndividuo() {
 		$data = $this->musuarios->eliminarIndividuo();
 		echo json_encode(array('success' => true));
 	}
 
-	public function salir()
-	{
+	public function salir() {
 		session_start();
 		session_destroy();
 		redirect(base_url());	
 	}
 
-	public function admin()
-	{	
+	public function admin() {	
 
 		session_start();
 		if (@$_SESSION['adminId']==1) {
@@ -69,8 +70,7 @@ class Cusuarios extends CI_Controller {
 			
 	}
 
-	public function loginAdmin()
-	{
+	public function loginAdmin() {
 		$user = $this->input->post("username");
 		$pass = $this->input->post("password");
 

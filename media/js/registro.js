@@ -1,3 +1,10 @@
+$(function(){
+	$("#Modal").modal({
+		backdrop:false,
+		show:false,
+	});
+});
+
 $(document).on("click","a.submit-form",function(e){
 	e.preventDefault();
 	if ($("#nombres").val()!='' && $("#apellidos").val()!='' && $("#dni").val()!='' && $("#email").val()!='' && $("#condiciones").is(':checked')) {
@@ -15,6 +22,10 @@ $(document).on("click","a.submit-form",function(e){
 	    		data:datos,
 	    		dataType:"json",
 	    		type:"POST",
+	    		beforeSend:function(){
+	    			$("#Modal div.modal-body").html("<center><img src='media/img/loader.gif'/></center>");
+	    			$("#Modal").modal("show");
+	    		},
 	    	}).done(function(data){
 	    		var dataJson = eval(data);
 	    		if (dataJson['success']) {
