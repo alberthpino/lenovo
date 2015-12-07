@@ -63,17 +63,19 @@ class Mpartidas extends CI_Model{
 
     public function getRankingGlobal()
     {
+        
         $this->db->from("partidas p");
-        $this->db->join("individuos i","p.usuario_id = i.individuo_id");
-        $this->db->order_by("p.partida_aciertos", "desc"); 
-        $this->db->order_by("p.partida_tiempo", "asc");
+        $this->db->join("individuos i","i.individuo_id = p.usuario_id");
+        $this->db->order_by("p.partida_aciertos", "DESC"); 
+        $this->db->order_by("p.partida_tiempo", "ASC");
+        $this->db->order_by("p.partida_id", "ASC");
         $this->db->limit(5);
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
             return $query->result_array();
         }else{
-            return false;
+            return false; 
         }
     }
 

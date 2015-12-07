@@ -92,18 +92,18 @@ class Musuarios extends CI_Model{
     }
 
     public function getParticipantes($limit, $start) {
-        
-        $this->db->from("partidas p");
-        $this->db->join("individuos i","p.usuario_id = i.individuo_id");
-        $this->db->order_by("p.partida_aciertos", "desc"); 
-        $this->db->order_by("p.partida_tiempo", "asc");
+        $this->db->from("partidas");
+        $this->db->join("individuos","individuos.individuo_id = partidas.usuario_id","LEFT");
+        $this->db->order_by("partidas.partida_aciertos", "DESC"); 
+        $this->db->order_by("partidas.partida_tiempo", "ASC");
+        $this->db->order_by("partidas.partida_id", "ASC");
         $this->db->limit($limit, $start);
+        
         $query = $this->db->get();
-
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
                 $data[] = $row;
-            }
+            } 
             return $data;
         }
         return false;
