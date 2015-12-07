@@ -24,7 +24,8 @@
 		.titulo_terminos{
 			font-size:16px;
 			background:url(../media/img/titulo_terminos.png) no-repeat center;
-			background-size:70% 90%;
+			background-size:90% 100%;
+
 		}
 		@media (max-width: 1110px) {
 			.fila_lista h4{
@@ -33,24 +34,10 @@
 			.titulo_terminos h4{
 				font-size:16px;
 			}
-			.titulo_terminos{
-				background-size:90% 90%;
-			}
-		}
-		@media (max-width: 992px) {
-			.fila_lista h4{
-				font-size:15px;
-
-			}.titulo_terminos{
-				background-size:90% 90%;
-				padding:5px;
-			}
 		}
 		@media (max-width: 950px) {
 			.fila_lista h4{
 				font-size:14px;
-			}.titulo_terminos{
-				background-size:90% 90%;
 			}
 		}
 		@media (max-width: 768px) {
@@ -61,9 +48,6 @@
 			}
 			.titulo_terminos h4{
 				font-size:14px;
-			}
-			.titulo_terminos{
-				background-size:90% 90%;
 			}
 		}
 		@media (max-width: 440px) {
@@ -82,9 +66,6 @@
 				padding-top:2%;
 				padding-left:5%;
 			}
-			.titulo_terminos{
-				background-size:100% 90%;
-			}
 		}
 		@media (max-width: 300px) {
 			.fila_lista h4{
@@ -92,9 +73,39 @@
 				padding-top:2%;
 				padding-left:2%;
 			}
-			.titulo_terminos{
-				background-size:100% 90%;
-			}
+		}
+
+		::-webkit-scrollbar{
+		  width: 10px;
+		  background: #dbe8ec;
+		}
+		::-webkit-scrollbar-button{
+		  width:8px;
+		  height: 5px;
+		}
+		::-webkit-scrollbar-track{
+		  background:#090100;
+		  border:thin solid #1a1f25;
+		  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+		  -webkit-border-radius: 10px;
+		  border-radius: 10px;
+		}
+		::-webkit-scrollbar-thumb{
+		  background: -webkit-linear-gradient(top, #B51C0E, #570F06);
+		  -webkit-box-shadow:   inset 0 1px 0 rgba(255,255,225,.5),
+		                inset 1px 0 0 rgba(255,255,255,.4),
+		                inset 0 1px 2px rgba(255,255,255,.3);
+		 
+		  border:thin solid #232c34;
+		  border-radius: 10px;
+		  -webkit-border-radius: 10px;
+		}
+		::-webkit-scrollbar-thumb:hover{
+		    background: -webkit-linear-gradient(top, #D3200F, #9F1804);
+		}
+		/* Pseudo-clase */
+		::-webkit-scrollbar-thumb:window-inactive {
+		  background: rgba(77,161,112,.6);
 		}
 	</style>
 </head>	
