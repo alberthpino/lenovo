@@ -17,6 +17,11 @@ class Inicio extends CI_Controller {
 		}
 	}
 
+	public function terminos_condiciones() {
+		session_start();
+		$this->load->view('terminos.html');
+	}
+
 }
 
 ?>
