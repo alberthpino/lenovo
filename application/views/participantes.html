@@ -31,7 +31,8 @@
 								<tr>
 									<th>Puesto.</th>
 									<th>Nombres</th>
-									<th colspan="2">Apellidos</th>
+									<th>Apellidos</th>
+									<th colspan="2">Puntos</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -40,6 +41,7 @@
 									<td align="center" width="10%"><?php echo $i; ?></td>
 									<td><?php echo $data->individuo_nombres; ?></td>
 									<td><?php echo $data->individuo_apellidos; ?></td>
+									<td><?php echo ($data->partida_aciertos*10); ?></td>
 									<td align="center" width="30%">
 										<button class="btn btn-default ver" data-id="<?php echo $data->individuo_id; ?>"><i class="glyphicon glyphicon-search"></i> Ver</button>
 										<button class="btn btn-danger eliminar" data-id="<?php echo $data->individuo_id; ?>"><i class="glyphicon glyphicon-remove"></i> Eliminar</button>

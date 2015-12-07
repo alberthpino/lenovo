@@ -14,6 +14,7 @@ $(document).on("click","button.ver",function(){
 		$("#email").val(dataJson['datos'].individuo_email);
 		$("#movil").val(dataJson['datos'].individuo_movil);
 		$("#puntos").val(dataJson['datos'].partida_aciertos*10);
+		$("#tiempo").val(dataJson['datos'].partida_tiempo);
 		$("div#ventanaModal").modal("show");
 		console.log(dataJson);
 	}).fail(function(){
