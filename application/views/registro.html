@@ -61,7 +61,7 @@
 							</div>
 							<br>
 							<center class="txt-panel">
-								<input type="radio" name="aceptar" class="radio-acepto" value="1" required id="condiciones"> Estoy de Acuerdo con los <a class="text-red" href="#">Términos y condiciones</a>
+								<input type="radio" name="aceptar" class="radio-acepto" value="1" required id="condiciones"> Estoy de Acuerdo con los <a class="text-red" id="condiciones_a" href="#">Términos y condiciones</a>
 							</center><br>
 							<h5 id="mssge" style="display:none" align="center"></h5>
 							<center>
@@ -93,6 +93,6 @@
     <script src="media/js/application.js"></script>
     <script src="media/js/init.js"></script>
     <script src="media/js/registro.js"></script>
-    <script type="text/javascript">$(function(){$("#Modal").modal({show:false,})$("#condiciones").on("click",function(event){ event.preventDefault(); $("#Modal").modal("show");})});</script>
+    <script type="text/javascript">$(function(){$("#Modal").modal({show:false,})$("#condiciones_a").on("click",function(event){ event.preventDefault(); $("#Modal").modal("show");})});</script>
 </body>
 </html>
