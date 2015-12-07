@@ -93,6 +93,17 @@
     <script src="media/js/application.js"></script>
     <script src="media/js/init.js"></script>
     <script src="media/js/registro.js"></script>
-    <script type="text/javascript">$(function(){$("#Modal").modal({show:false,})$("#condiciones_a").on("click",function(event){ event.preventDefault(); $("#Modal").modal("show");})});</script>
+    <script type="text/javascript">
+    	$(function() {
+    		$("#Modal").modal({
+    			show:false
+    		});
+
+    		$("#condiciones_a").on("click",function(event){ 
+    			event.preventDefault(); 
+    			$("#Modal").modal("show");
+    		});
+    	});
+    </script>
 </body>
 </html>
